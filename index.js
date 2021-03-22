@@ -12,7 +12,7 @@ const dates = [];
 
 function calculateDates(num) {
   for (let i = 0; i < num; ++i) {
-    let date = new Date(Date.now() - 86400000 * i);
+    let date = new Date(Date.now() - 24 * 60 * 60 * 1000 * i);
     dates.push(
       date.getFullYear() +
         "-" +
