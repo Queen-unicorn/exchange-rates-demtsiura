@@ -8,9 +8,8 @@ const dropdownList = document.getElementById("dropdownList");
 const rows = {};
 const defaultBase = "RUB";
 
-const dates = [];
-
 function calculateDates(num) {
+  const dates = [];
   for (let i = 0; i < num; ++i) {
     let date = new Date(Date.now() - 24 * 60 * 60 * 1000 * i);
     dates.push(
@@ -21,9 +20,10 @@ function calculateDates(num) {
         align(date.getDate())
     );
   }
+  return dates;
 }
 
-function createButtons() {
+function createButtons(dates) {
   for (let date of dates) {
     const newButton = document.createElement("button");
     newButton.setAttribute("class", "button");
@@ -107,7 +107,7 @@ function align(num, len = 2) {
 }
 
 //insert number of buttons (days)
-calculateDates(7);
-createButtons();
+const dates = calculateDates(7);
+createButtons(dates);
 firstUpdateDate();
 fetchRates(getTodayDate(), defaultBase);
